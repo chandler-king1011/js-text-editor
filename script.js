@@ -37,7 +37,7 @@ const alignText = (button ,alignType) => {
 
 
 
-input.addEventListener("keyup", (e) => {
+input.addEventListener("input", (e) => {
     updateText(e.target.value)
 })
 boldButton.addEventListener("click", makeBold);
