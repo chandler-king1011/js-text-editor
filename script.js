@@ -3,9 +3,7 @@ const output = document.querySelector("#text-output");
 const boldButton = document.querySelector("#bold");
 const italicButton = document.querySelector("#italic");
 const underlineButton = document.querySelector("#underline");
-const leftAlignButton = document.querySelector("#left-align");
-const centerAlignButton = document.querySelector("#center-align");
-const rightAlignButton = document.querySelector("#right-align");
+const alignButtons = document.getElementsByClassName("align");
 
 
 const updateText = (text) => {
@@ -13,55 +11,36 @@ const updateText = (text) => {
 }
 const makeBold = () => {
     output.classList.toggle("bold");
-    boldButton.classList.toggle("btn-light");
-    boldButton.classList.toggle("btn-dark");
+    boldButton.classList.toggle("active");
+    
 }
 const makeItalic = () => {
     output.classList.toggle("italic");
-    italicButton.classList.toggle("btn-light");
-    italicButton.classList.toggle("btn-dark");
+    italicButton.classList.toggle("active");
+    
 }
 const underline = () => {
     output.classList.toggle("underline");
-    underlineButton.classList.toggle("btn-light");
-    underlineButton.classList.toggle("btn-dark");
+    underlineButton.classList.toggle("active");
 }
-const leftAlign = () => {
-    output.style.textAlign = "left";
-    leftAlignButton.classList.toggle("btn-light");
-    leftAlignButton.classList.toggle("btn-dark");
-    centerAlignButton.classList.add("btn-light");
-    centerAlignButton.classList.remove("btn-dark");
-    rightAlignButton.classList.add("btn-light");
-    rightAlignButton.classList.remove("btn-dark");
+const alignText = (button ,alignType) => {
+    output.style.textAlign = alignType;
+    button.classList.add("active");
+
+    const buttons = document.getElementsByClassName("align");
+    for (i = 0; i < buttons.length; i++) {
+        if (buttons[i] != button) {
+            buttons[i].classList.remove("active");
+        }
+    }
 }
-const rightAlign = () => {
-    output.style.textAlign = "right";
-    rightAlignButton.classList.toggle("btn-light");
-    rightAlignButton.classList.toggle("btn-dark");
-    centerAlignButton.classList.add("btn-light");
-    centerAlignButton.classList.remove("btn-dark");
-    leftAlignButton.classList.add("btn-light");
-    leftAlignButton.classList.remove("btn-dark");
-}
-const centerAlign = () => {
-    output.style.textAlign = "center";
-    centerAlignButton.classList.toggle("btn-light");
-    centerAlignButton.classList.toggle("btn-dark");
-    rightAlignButton.classList.add("btn-light");
-    rightAlignButton.classList.remove("btn-dark");
-    leftAlignButton.classList.add("btn-light");
-    leftAlignButton.classList.remove("btn-dark");
-}
+
 
 
 input.addEventListener("keyup", (e) => {
     updateText(e.target.value)
 })
-
 boldButton.addEventListener("click", makeBold);
 italicButton.addEventListener("click", makeItalic);
 underlineButton.addEventListener("click", underline);
-leftAlignButton.addEventListener("click", leftAlign);
-rightAlignButton.addEventListener("click", rightAlign);
-centerAlignButton.addEventListener("click", centerAlign);
+
