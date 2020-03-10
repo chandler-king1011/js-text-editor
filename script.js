@@ -27,12 +27,12 @@ const alignText = (button ,alignType) => {
     output.style.textAlign = alignType;
     button.classList.add("active");
 
-    const buttons = document.getElementsByClassName("align");
-    for (i = 0; i < buttons.length; i++) {
-        if (buttons[i] != button) {
-            buttons[i].classList.remove("active");
+    const buttons = document.querySelectorAll(".align");
+    buttons.forEach(but => {
+        if (but != button) {
+            but.classList.remove("active");
         }
-    }
+    })
 }
 
 
